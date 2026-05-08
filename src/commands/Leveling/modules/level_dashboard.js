@@ -171,8 +171,9 @@ export default {
                     if (!selectInteraction.replied && !selectInteraction.deferred) {
                         await selectInteraction.deferUpdate().catch(() => {});
                     }
-await selectInteraction.deferUpdate().catch(() => {}); 
-                
+
+                    await selectInteraction
+                        .followUp({
                             embeds: [errorEmbed('Configuration Error', errorMessage)],
                             flags: MessageFlags.Ephemeral,
                         })
@@ -558,4 +559,3 @@ async function handleXpCooldown(selectInteraction, rootInteraction, cfg, guildId
 
     await refreshDashboard(rootInteraction, cfg, guildId);
 }
-
