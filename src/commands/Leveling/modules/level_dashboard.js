@@ -171,9 +171,8 @@ export default {
                     if (!selectInteraction.replied && !selectInteraction.deferred) {
                         await selectInteraction.deferUpdate().catch(() => {});
                     }
-
-                    await selectInteraction
-                        .followUp({
+await selectInteraction.deferUpdate().catch(() => {}); 
+                
                             embeds: [errorEmbed('Configuration Error', errorMessage)],
                             flags: MessageFlags.Ephemeral,
                         })
